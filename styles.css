@@ -233,6 +233,19 @@ a {
   outline: 1px solid var(--accent);
   outline-offset: 2px;
 }
+.meal-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.item-qty {
+  width: 60px;
+  padding: 4px;
+}
 
 @media (max-width: 768px) {
   .top-nav {

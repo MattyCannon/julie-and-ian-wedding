@@ -5,24 +5,31 @@
   const form = document.getElementById('rsvp-form');
   const submitButton = document.getElementById('rsvp-submit');
   const nameInput = document.getElementById('rsvp-name');
-  const starterSelect = document.getElementById('starter-choice');
-  const mainSelect = document.getElementById('main-choice');
-  const dessertSelect = document.getElementById('dessert-choice');
   const dietaryInput = document.getElementById('rsvp-dietary');
 
-  if (!button || !form || !submitButton || !nameInput || !starterSelect || !mainSelect || !dessertSelect) return;
+  if (!button || !form || !submitButton || !nameInput) return;
 
   const comingInputs = form.querySelectorAll('input[name="coming"]');
 
-  // Helper function to get multiple values from a select element
-  function getSelectedOptions(selectElement) {
-    return Array.from(selectElement.selectedOptions).map(option => option.value).join(', ');
+  // Helper to compile choices into a readable string
+  function getQuantities() {
+    const qtySelects = form.querySelectorAll('.item-qty');
+    let summary = [];
+    
+    qtySelects.forEach(select => {
+      const val = parseInt(select.value);
+      if (val > 0) {
+        const itemName = select.getAttribute('data-item');
+        summary.push(`${val} x ${itemName}`);
+      }
+    });
+    
+    return summary.join(', ');
   }
 
   function updateSubmitVisibility() {
     const comingSelected = form.querySelector('input[name="coming"]:checked');
     const nameFilled = nameInput.value.trim().length > 0;
-
     if (comingSelected && nameFilled) {
       submitButton.removeAttribute('hidden');
     } else {
@@ -30,35 +37,19 @@
     }
   }
 
-  comingInputs.forEach(function (input) {
-    input.addEventListener('change', updateSubmitVisibility);
-  });
+  comingInputs.forEach(input => input.addEventListener('change', updateSubmitVisibility));
   nameInput.addEventListener('input', updateSubmitVisibility);
 
   button.addEventListener('click', function () {
-    const isHidden = form.hasAttribute('hidden');
-    if (isHidden) {
-      form.removeAttribute('hidden');
-      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else {
-      form.setAttribute('hidden', '');
-    }
+    form.hasAttribute('hidden') ? form.removeAttribute('hidden') : form.setAttribute('hidden', '');
+    if (!form.hasAttribute('hidden')) form.scrollIntoView({ behavior: 'smooth' });
   });
 
   submitButton.addEventListener('click', function () {
     const comingSelected = form.querySelector('input[name="coming"]:checked');
     const name = nameInput.value.trim();
-    
-    // Updated to handle multiple selections
-    const starter = getSelectedOptions(starterSelect);
-    const main = getSelectedOptions(mainSelect);
-    const dessert = getSelectedOptions(dessertSelect);
-    
+    const allChoices = getQuantities(); // This gets all Starters, Mains, and Desserts
     const dietary = dietaryInput ? dietaryInput.value.trim() : '';
-
-    if (!comingSelected || !name) {
-      return;
-    }
 
     submitButton.disabled = true;
     submitButton.innerText = "Sending...";
@@ -66,29 +57,24 @@
     const payload = {
       coming: comingSelected.value,
       name: name,
-      starter: starter, // This will now be "Soup, Salad" instead of just "Soup"
-      main: main,
-      dessert: dessert,
+      choices: allChoices, // Sent as one string: "2 x Soup, 1 x Salmon, 3 x Torte"
       dietary: dietary
     };
 
     fetch('https://script.google.com/macros/s/AKfycbzSQhSpJTAUZhre1nM06P-4E8KldQJUuBzBEDxupPNkM-ecUkHRhc0woXSKkM1hiQSV/exec', {
       method: 'POST',
       mode: 'no-cors',
-      headers: {
-        'Content-Type': 'text/plain'
-      },
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify(payload)
     })
-    .then(function() {
+    .then(() => {
       alert('Thank you for your RSVP, ' + name + '!');
       form.setAttribute('hidden', '');
       button.innerText = "RSVP Sent!";
       button.disabled = true;
     })
-    .catch(function (error) {
+    .catch(error => {
       console.error('[RSVP] Error:', error);
-      alert('There was a problem sending your RSVP. Please try again.');
       submitButton.disabled = false;
       submitButton.innerText = "Submit";
     });

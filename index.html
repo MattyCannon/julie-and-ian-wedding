@@ -359,14 +359,6 @@
       The happy day ends when the dancing finishes with the DJ at midnight.
     </p>
 
-    <!-- LOCATION INFO -->
-    <section class="details">
-      <h2>When &amp; Where</h2>
-      <p><strong>Date:</strong> 23rd May 2026</p>
-      <p><strong>Ceremony:</strong> 1 pm (Outside Ceremony)</p>
-      <p><strong>Venue:</strong> Fishlake Mill</p>
-      <p>Eastfield Road, Fishlake, Doncaster DN7 5LH</p>
-    </section>
     <section class="details" id="rsvp-section">
       <button class="cta-button" id="rsvp-button" type="button">RSVP</button>
     
@@ -374,64 +366,67 @@
         <div class="rsvp-field">
           <span class="rsvp-label">Will you be attending?</span>
           <div class="rsvp-options">
-            <label>
-              <input type="radio" name="coming" value="yes">
-              Joyfully accepts
-            </label>
-            <label>
-              <input type="radio" name="coming" value="no">
-              Regretfully Declines
-            </label>
+            <label><input type="radio" name="coming" value="yes"> Joyfully accepts</label>
+            <label><input type="radio" name="coming" value="no"> Regretfully Declines</label>
           </div>
         </div>
     
         <div class="rsvp-field">
-          <label class="rsvp-label" for="rsvp-name">Your name</label>
-          <input id="rsvp-name" name="name" type="text" class="rsvp-input" autocomplete="name">
+          <label class="rsvp-label" for="rsvp-name">Lead Guest Name</label>
+          <input id="rsvp-name" name="name" type="text" class="rsvp-input" placeholder="e.g. John Smith & Family">
         </div>
     
         <div class="rsvp-field">
-          <p class="rsvp-label">Meal Choices</p>
-          <p style="font-size: 0.85rem; color: var(--secondary-text); margin-top: 0;">
-            You can select multiple options by holding Ctrl (Windows) or Command (Mac).
-          </p>
+          <p class="rsvp-label">Starters (Select quantity)</p>
+          <div class="meal-row">
+            <label>Tomato Soup</label>
+            <select class="item-qty" data-item="Tomato Soup"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+          </div>
+          <div class="meal-row">
+            <label>Prawn Cocktail</label>
+            <select class="item-qty" data-item="Prawn Cocktail"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+          </div>
+          <div class="meal-row">
+            <label>Halloumi Stack (v)</label>
+            <select class="item-qty" data-item="Halloumi Stack"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+          </div>
         </div>
     
         <div class="rsvp-field">
-          <label class="rsvp-label" for="starter-choice">Starter(s)</label>
-          <select id="starter-choice" name="starter" class="rsvp-input" multiple size="3">
-            <option value="Tomato Soup with a Cream Swirl">Tomato Soup with a Cream Swirl</option>
-            <option value="Classic Prawn Cocktail with Flutes of Brown Bread">Classic Prawn Cocktail with Flutes of Brown Bread</option>
-            <option value="Stack of Halloumi, Pepper and Courgette with a Balsamic Syrup (v)">Stack of Halloumi, Pepper and Courgette with a Balsamic Syrup (v)</option>
-          </select>
+          <p class="rsvp-label">Mains</p>
+          <div class="meal-row">
+            <label>Chicken Supreme</label>
+            <select class="item-qty" data-item="Chicken"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+          </div>
+          <div class="meal-row">
+            <label>Roasted Salmon</label>
+            <select class="item-qty" data-item="Salmon"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+          </div>
+          <div class="meal-row">
+            <label>Steak & Ale Pie</label>
+            <select class="item-qty" data-item="Steak Pie"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+          </div>
         </div>
     
         <div class="rsvp-field">
-          <label class="rsvp-label" for="main-choice">Main(s)</label>
-          <select id="main-choice" name="main" class="rsvp-input" multiple size="3">
-            <option value="Chicken Supreme stuffed with Mushroom Mousse and wrapped in Bacon with a Madeira Demi-Glace">
-              Chicken Supreme stuffed with Mushroom Mousse and wrapped in Bacon with a Madeira Demi-Glace
-            </option>
-            <option value="Oven-Roasted Salmon with a Herb Crust in a Prawn Butter Sauce">
-              Oven-Roasted Salmon with a Herb Crust in a Prawn Butter Sauce
-            </option>
-            <option value="Fishlake’s Famous Steak and Ale Pie">Fishlake’s Famous Steak and Ale Pie</option>
-          </select>
+          <p class="rsvp-label">Desserts</p>
+          <div class="meal-row">
+            <label>Meringue Nest</label>
+            <select class="item-qty" data-item="Meringue"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+          </div>
+          <div class="meal-row">
+            <label>Chocolate Torte</label>
+            <select class="item-qty" data-item="Torte"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+          </div>
+          <div class="meal-row">
+            <label>Apple Crumble</label>
+            <select class="item-qty" data-item="Crumble"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+          </div>
         </div>
     
         <div class="rsvp-field">
-          <label class="rsvp-label" for="dessert-choice">Dessert(s)</label>
-          <select id="dessert-choice" name="dessert" class="rsvp-input" multiple size="4">
-            <option value="Meringue Nest filled with Fresh Exotic Fruits">Meringue Nest filled with Fresh Exotic Fruits</option>
-            <option value="Chocolate Torte with a Berry Compote">Chocolate Torte with a Berry Compote</option>
-            <option value="Apple Crumble with Crème Anglaise">Apple Crumble with Crème Anglaise</option>
-            <option value="Three Cheese Platter">Three Cheese Platter</option>
-          </select>
-        </div>
-    
-        <div class="rsvp-field">
-          <label class="rsvp-label" for="rsvp-dietary">Dietary needs or allergies</label>
-          <textarea id="rsvp-dietary" name="dietary" class="rsvp-input" rows="3" placeholder="Please let us know of any dietary needs or allergies. Thank you"></textarea>
+          <label class="rsvp-label" for="rsvp-dietary">Dietary needs</label>
+          <textarea id="rsvp-dietary" name="dietary" class="rsvp-input" rows="3"></textarea>
         </div>
     
         <div class="rsvp-actions">
