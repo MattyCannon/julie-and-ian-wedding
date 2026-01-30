@@ -61,7 +61,7 @@
       dietary: dietary
     };
 
-    fetch('https://script.google.com/macros/s/AKfycbzSQhSpJTAUZhre1nM06P-4E8KldQJUuBzBEDxupPNkM-ecUkHRhc0woXSKkM1hiQSV/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbxWN7JyhVS4SbQG3_bezW577zrM_nGK9qyZ45lGEXL0kTr2-K0WmhJAzO-xjKE9Uly3/exec', {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'text/plain' },
