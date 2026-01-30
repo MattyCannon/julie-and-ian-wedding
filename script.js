@@ -9,8 +9,6 @@
 
   if (!button || !form || !submitButton || !nameInput) return;
 
-  const comingInputs = form.querySelectorAll('input[name="coming"]');
-
   // Helper to compile choices into a readable string
   function getQuantities() {
     const qtySelects = form.querySelectorAll('.item-qty');
@@ -28,36 +26,39 @@
   }
 
   function updateSubmitVisibility() {
-    const comingSelected = form.querySelector('input[name="coming"]:checked');
-    const nameFilled = nameInput.value.trim().length > 0;
-    if (comingSelected && nameFilled) {
+    // Only check if name is filled
+    if (nameInput.value.trim().length > 0) {
       submitButton.removeAttribute('hidden');
     } else {
       submitButton.setAttribute('hidden', '');
     }
   }
 
-  comingInputs.forEach(input => input.addEventListener('change', updateSubmitVisibility));
   nameInput.addEventListener('input', updateSubmitVisibility);
 
   button.addEventListener('click', function () {
-    form.hasAttribute('hidden') ? form.removeAttribute('hidden') : form.setAttribute('hidden', '');
-    if (!form.hasAttribute('hidden')) form.scrollIntoView({ behavior: 'smooth' });
+    const isHidden = form.hasAttribute('hidden');
+    if (isHidden) {
+      form.removeAttribute('hidden');
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      form.setAttribute('hidden', '');
+    }
   });
 
   submitButton.addEventListener('click', function () {
-    const comingSelected = form.querySelector('input[name="coming"]:checked');
     const name = nameInput.value.trim();
-    const allChoices = getQuantities(); // This gets all Starters, Mains, and Desserts
+    const allChoices = getQuantities();
     const dietary = dietaryInput ? dietaryInput.value.trim() : '';
+
+    if (!name) return;
 
     submitButton.disabled = true;
     submitButton.innerText = "Sending...";
 
     const payload = {
-      coming: comingSelected.value,
       name: name,
-      choices: allChoices, // Sent as one string: "2 x Soup, 1 x Salmon, 3 x Torte"
+      choices: allChoices,
       dietary: dietary
     };
 
@@ -67,14 +68,15 @@
       headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify(payload)
     })
-    .then(() => {
+    .then(function() {
       alert('Thank you for your RSVP, ' + name + '!');
       form.setAttribute('hidden', '');
       button.innerText = "RSVP Sent!";
       button.disabled = true;
     })
-    .catch(error => {
+    .catch(function (error) {
       console.error('[RSVP] Error:', error);
+      alert('There was a problem sending your RSVP. Please try again.');
       submitButton.disabled = false;
       submitButton.innerText = "Submit";
     });
