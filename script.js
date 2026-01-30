@@ -1,6 +1,5 @@
 // Write JavaScript here
 // script.js
-
 (function () {
   const button = document.getElementById('rsvp-button');
   const form = document.getElementById('rsvp-form');
@@ -14,6 +13,11 @@
   if (!button || !form || !submitButton || !nameInput || !starterSelect || !mainSelect || !dessertSelect) return;
 
   const comingInputs = form.querySelectorAll('input[name="coming"]');
+
+  // Helper function to get multiple values from a select element
+  function getSelectedOptions(selectElement) {
+    return Array.from(selectElement.selectedOptions).map(option => option.value).join(', ');
+  }
 
   function updateSubmitVisibility() {
     const comingSelected = form.querySelector('input[name="coming"]:checked');
@@ -41,43 +45,42 @@
     }
   });
 
-  // --- THE FIX IS HERE ---
   submitButton.addEventListener('click', function () {
     const comingSelected = form.querySelector('input[name="coming"]:checked');
     const name = nameInput.value.trim();
-    const starter = starterSelect.value;
-    const main = mainSelect.value;
-    const dessert = dessertSelect.value;
+    
+    // Updated to handle multiple selections
+    const starter = getSelectedOptions(starterSelect);
+    const main = getSelectedOptions(mainSelect);
+    const dessert = getSelectedOptions(dessertSelect);
+    
     const dietary = dietaryInput ? dietaryInput.value.trim() : '';
 
     if (!comingSelected || !name) {
       return;
     }
 
-    // Disable the button so they don't click it twice
     submitButton.disabled = true;
     submitButton.innerText = "Sending...";
 
     const payload = {
       coming: comingSelected.value,
       name: name,
-      starter: starter,
+      starter: starter, // This will now be "Soup, Salad" instead of just "Soup"
       main: main,
       dessert: dessert,
       dietary: dietary
     };
 
-    // The fetch MUST be inside the click event listener
     fetch('https://script.google.com/macros/s/AKfycbzSQhSpJTAUZhre1nM06P-4E8KldQJUuBzBEDxupPNkM-ecUkHRhc0woXSKkM1hiQSV/exec', {
       method: 'POST',
-      mode: 'no-cors', // Essential for Google Apps Script from a static site
+      mode: 'no-cors',
       headers: {
-        'Content-Type': 'text/plain' // Avoids CORS preflight
+        'Content-Type': 'text/plain'
       },
       body: JSON.stringify(payload)
     })
     .then(function() {
-      // With 'no-cors', we assume success if the catch block isn't hit
       alert('Thank you for your RSVP, ' + name + '!');
       form.setAttribute('hidden', '');
       button.innerText = "RSVP Sent!";

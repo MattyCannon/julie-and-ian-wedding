@@ -367,11 +367,9 @@
       <p><strong>Venue:</strong> Fishlake Mill</p>
       <p>Eastfield Road, Fishlake, Doncaster DN7 5LH</p>
     </section>
-
-    <!--RSVP SECTION - with script-->
     <section class="details" id="rsvp-section">
       <button class="cta-button" id="rsvp-button" type="button">RSVP</button>
-
+    
       <form class="rsvp-form" id="rsvp-form" aria-label="RSVP form" hidden>
         <div class="rsvp-field">
           <span class="rsvp-label">Will you be attending?</span>
@@ -386,33 +384,31 @@
             </label>
           </div>
         </div>
-
+    
         <div class="rsvp-field">
           <label class="rsvp-label" for="rsvp-name">Your name</label>
           <input id="rsvp-name" name="name" type="text" class="rsvp-input" autocomplete="name">
         </div>
-
+    
         <div class="rsvp-field">
           <p class="rsvp-label">Meal Choices</p>
           <p style="font-size: 0.85rem; color: var(--secondary-text); margin-top: 0;">
-            Please choose one starter, one main and one dessert.
+            You can select multiple options by holding Ctrl (Windows) or Command (Mac).
           </p>
         </div>
-
+    
         <div class="rsvp-field">
-          <label class="rsvp-label" for="starter-choice">Starter</label>
-          <select id="starter-choice" name="starter" class="rsvp-input">
-            <option value="">Please select a starter</option>
+          <label class="rsvp-label" for="starter-choice">Starter(s)</label>
+          <select id="starter-choice" name="starter" class="rsvp-input" multiple size="3">
             <option value="Tomato Soup with a Cream Swirl">Tomato Soup with a Cream Swirl</option>
             <option value="Classic Prawn Cocktail with Flutes of Brown Bread">Classic Prawn Cocktail with Flutes of Brown Bread</option>
             <option value="Stack of Halloumi, Pepper and Courgette with a Balsamic Syrup (v)">Stack of Halloumi, Pepper and Courgette with a Balsamic Syrup (v)</option>
           </select>
         </div>
-
+    
         <div class="rsvp-field">
-          <label class="rsvp-label" for="main-choice">Main</label>
-          <select id="main-choice" name="main" class="rsvp-input">
-            <option value="">Please select a main</option>
+          <label class="rsvp-label" for="main-choice">Main(s)</label>
+          <select id="main-choice" name="main" class="rsvp-input" multiple size="3">
             <option value="Chicken Supreme stuffed with Mushroom Mousse and wrapped in Bacon with a Madeira Demi-Glace">
               Chicken Supreme stuffed with Mushroom Mousse and wrapped in Bacon with a Madeira Demi-Glace
             </option>
@@ -422,70 +418,31 @@
             <option value="Fishlake’s Famous Steak and Ale Pie">Fishlake’s Famous Steak and Ale Pie</option>
           </select>
         </div>
-
+    
         <div class="rsvp-field">
-          <label class="rsvp-label" for="dessert-choice">Dessert</label>
-          <select id="dessert-choice" name="dessert" class="rsvp-input">
-            <option value="">Please select a dessert</option>
+          <label class="rsvp-label" for="dessert-choice">Dessert(s)</label>
+          <select id="dessert-choice" name="dessert" class="rsvp-input" multiple size="4">
             <option value="Meringue Nest filled with Fresh Exotic Fruits">Meringue Nest filled with Fresh Exotic Fruits</option>
             <option value="Chocolate Torte with a Berry Compote">Chocolate Torte with a Berry Compote</option>
             <option value="Apple Crumble with Crème Anglaise">Apple Crumble with Crème Anglaise</option>
             <option value="Three Cheese Platter">Three Cheese Platter</option>
           </select>
         </div>
-
+    
         <div class="rsvp-field">
           <label class="rsvp-label" for="rsvp-dietary">Dietary needs or allergies</label>
           <textarea id="rsvp-dietary" name="dietary" class="rsvp-input" rows="3" placeholder="Please let us know of any dietary needs or allergies. Thank you"></textarea>
         </div>
-
+    
         <div class="rsvp-actions">
           <button class="cta-button" id="rsvp-submit" type="button" hidden>Submit</button>
         </div>
       </form>
     </section>
-
       <!-- INFO -->
     <section class="details">
       <p>The happy day ends when the dancing finishes with the DJ at midnight.</p>
     </section>
-
-    <!-- RSVP SECTION (chatgpt) -->
-    <!-- RSVP BUTTON -->
-    <!-- <button class="rsvp-button" onclick="toggleRSVP()">RSVP</button> -->
-
-    <!-- <section id="rsvp" class="rsvp-section">
-      <h3>Kindly Respond</h3>
-
-      <form>
-        <div class="form-group">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" placeholder="Your name" required />
-        </div>
-
-        <div class="form-group">
-          <label for="attendance">Will you be attending?</label>
-          <select id="attendance" required>
-            <option value="">Select an option</option>
-            <option value="yes">Joyfully accepts</option>
-            <option value="no">Regretfully declines</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="meal">Meal Preference</label>
-          <select id="meal" required>
-            <option value="">Choose a meal</option>
-            <option value="meat">Meat</option>
-            <option value="fish">Fish</option>
-            <option value="vegetarian">Vegetarian</option>
-            <option value="vegan">Vegan</option>
-          </select>
-        </div>
-
-        <button type="submit" class="submit-btn">Submit RSVP</button>
-      </form>
-    </section> -->
 
     <footer>
       If you'd like to give a gift <br> To help us on our way. <br> Some cash for our honeymoon <br> Would really make our day!<br> Thank you
