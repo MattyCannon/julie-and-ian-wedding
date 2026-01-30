@@ -9,11 +9,12 @@
 
   if (!button || !form || !submitButton || !nameInput) return;
 
-  // Helper to compile choices into a readable string
-  function getQuantities() {
-    const qtySelects = form.querySelectorAll('.item-qty');
+  // Helper to compile choices for a specific course into a readable string
+  function getQuantities(course) {
+    // Select only inputs belonging to the specified course
+    const qtySelects = form.querySelectorAll(`.item-qty[data-course="${course}"]`);
     let summary = [];
-    
+
     qtySelects.forEach(select => {
       const val = parseInt(select.value);
       if (val > 0) {
@@ -21,9 +22,10 @@
         summary.push(`${val} x ${itemName}`);
       }
     });
-    
-    return summary.join(', ');
+
+    return summary.join(', '); // Returns a clean string like "2 x Steak, 1 x Salad"
   }
+
 
   function updateSubmitVisibility() {
     // Only check if name is filled
@@ -48,7 +50,9 @@
 
   submitButton.addEventListener('click', function () {
     const name = nameInput.value.trim();
-    const allChoices = getQuantities();
+    const starterChoices = getQuantities(course='Starter');
+    const mainChoices = getQuantities(course='Main');
+    const dessertChoices = getQuantities(course='Dessert');
     const dietary = dietaryInput ? dietaryInput.value.trim() : '';
 
     if (!name) return;
@@ -58,7 +62,9 @@
 
     const payload = {
       name: name,
-      choices: allChoices,
+      starter_choices: starterChoices,
+      main_choices: mainChoices,
+      dessert_choices: dessertChoices,
       dietary: dietary
     };
 
