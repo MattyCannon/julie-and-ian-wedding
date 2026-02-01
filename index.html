@@ -162,15 +162,20 @@
       padding: 2rem;
       border-top: 1px solid #e5e5e5;
       text-align: center;
-      background-image: url('two-birds.jpg');
-      background-repeat: no-repeat;
-      background-position: 60% center;
-      background-size: auto 80%;
-      opacity: 0.15;
     }
 
     .rsvp-form[hidden] {
       display: none !important;
+    }
+
+    .form-illustration {
+    width: 180px;      /* Adjust size as needed */
+    height: auto;
+    opacity: 0.3;      /* This makes it semi-opaque */
+    margin: 0 auto 1.5rem;
+    display: block;
+    pointer-events: none; /* Prevents the image from interfering with clicks */
+    filter: sepia(20%);   /* Optional: adds a slight warm vintage tint */
     }
 
     .rsvp-field {
@@ -272,6 +277,8 @@
       <button class="cta-button" id="rsvp-button" type="button">RSVP</button>
     
       <form class="rsvp-form" id="rsvp-form" aria-label="RSVP form" hidden>
+
+        <img src="two-birds.jpg" alt="Wedding Illustration" class="form-illustration">
 
         <div class="rsvp-field">
           <label class="rsvp-label" for="rsvp-name">Guest Names</label>
