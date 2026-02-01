@@ -77,7 +77,8 @@
       
       // 2. Add some styling via JS
       successMsg.style.color = '#c9a36a'; // Matches your --accent color
-      successMsg.style.marginTop = '2rem';
+      successMsg.style.marginTop = '5rem';
+      successMsg.style.marginBottom = '5rem';
       successMsg.style.fontSize = '1.1rem';
       
       // 3. Insert it into the section where the form was
