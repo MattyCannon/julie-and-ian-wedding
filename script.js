@@ -157,7 +157,7 @@ window.addEventListener('scroll', () => {
     const treeCenterY = rect.top + rect.height / 2;
 
     // Create 5 petals for every scroll "tick"
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 1; i++) {
         petals.push(new Petal(treeCenterX, treeCenterY));
     }
 });

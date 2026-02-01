@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wedding of Julie & Ian</title>
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -69,7 +68,7 @@
       font-family: 'Ephesis', cursive;
       font-size: clamp(2.5rem, 10vw, 6rem);
       font-weight: 100;
-      margin-bottom: 15.5rem;
+      margin-bottom: 5.5rem;
       letter-spacing: 0.04em;
     }
 
@@ -89,101 +88,50 @@
       margin: 0 auto 5rem;
     }
 
-    /* ---------- LOCATION INFO ---------- */
-    .details {
-      margin: 0 auto 5rem;
-      font-size: 1rem;
-      text-align: center;
-      max-width: 100%;
-      width: 100%;
-    }
-
-    .details h2 {
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      margin-bottom: 1rem;
-      color: var(--secondary-text);
-    }
-
-    .details p {
-      margin: 0.4rem 0;
-    }
-
-    /* ---------- RSVP BUTTON ---------- */
-    .rsvp-button {
-      display: inline-block;
-      padding: 0.9rem 2.4rem;
-      border-radius: 999px;
-      border: 1px solid var(--accent);
-      background: transparent;
-      color: var(--primary-text);
-      font-size: 0.95rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      margin-bottom: 3rem;
-    }
-
-    .rsvp-button:hover {
-      background: var(--accent);
-      color: white;
-    }
-
-    /* ---------- RSVP SECTION ---------- */
-    .rsvp-section {
-      display: none;
+    /* ---------- NEW LOCATION CARD STYLE ---------- */
+    .location-card {
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      padding: 2.5rem 1.5rem;
       max-width: 480px;
-      margin: 0 auto;
-      padding-top: 2rem;
-      border-top: 1px solid #e5e5e5;
-      text-align: left;
+      margin: 4rem auto 0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
     }
 
-    .rsvp-section h3 {
-      text-align: center;
+    .location-card h2 {
       font-weight: 500;
-      margin-bottom: 1.5rem;
-    }
-
-    .form-group {
-      margin-bottom: 1.2rem;
-    }
-
-    label {
-      display: block;
-      font-size: 0.85rem;
-      margin-bottom: 0.4rem;
-      color: var(--secondary-text);
-    }
-
-    input, select {
-      width: 100%;
-      padding: 0.7rem 0.6rem;
-      font-family: inherit;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 0.9rem;
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 0.8rem;
-      border-radius: 6px;
-      border: none;
-      background: var(--accent);
-      color: white;
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      cursor: pointer;
-      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
     }
 
-    .submit-btn:hover {
-      opacity: 0.9;
+    .location-card p {
+      margin: 0.3rem 0;
+      line-height: 1.6;
+    }
+
+    .midnight-note {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #f0f0f0;
+      font-size: 0.9rem;
+      color: var(--secondary-text);
+      font-style: italic;
+    }
+
+    .ceremony-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--secondary-text);
+      border: 1px solid #eee;
+      padding: 4px 12px;
+      border-radius: 20px;
     }
 
     /* ---------- RSVP FORM STYLES ---------- */
@@ -199,7 +147,7 @@
       text-transform: uppercase;
       cursor: pointer;
       transition: all 0.2s ease;
-      margin: 2rem 0 3rem;
+      margin: 2rem 0 1rem;
       font-family: inherit;
     }
 
@@ -214,7 +162,6 @@
       padding: 2rem;
       border-top: 1px solid #e5e5e5;
       text-align: center;
-      display: block !important;
     }
 
     .rsvp-form[hidden] {
@@ -238,20 +185,20 @@
       letter-spacing: 0.08em;
     }
 
-    .rsvp-options {
+    .meal-row {
       display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
     }
 
-    .rsvp-options label {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    .meal-row label {
       font-size: 0.9rem;
-      color: var(--primary-text);
-      cursor: pointer;
+    }
+
+    .item-qty {
+      width: 60px;
+      padding: 0.3rem;
     }
 
     .rsvp-input {
@@ -264,17 +211,7 @@
       background: white;
     }
 
-    .rsvp-input:focus {
-      outline: 1px solid var(--accent);
-      outline-offset: 2px;
-    }
-
-    .rsvp-actions {
-      text-align: center;
-      margin-top: 1.5rem;
-    }
-
-    /* ---------- TREE CONTAINER ---------- */
+    /* ---------- CANVAS & TREE ---------- */
     .tree-container {
       position: fixed;
       top: 10%;
@@ -285,68 +222,16 @@
       pointer-events: none;
     }
 
-    #cherry-tree {
-      font-size: 100px;
-    }
-
-    /* ---------- CANVAS ---------- */
     canvas {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none;
       z-index: 999;
     }
 
-    /* ---------- FOOTER ---------- */
-    footer {
-      margin-top: 5rem;
-      font-size: 0.75rem;
-      color: #aaa;
-    }
-
-    /* ---------- RESPONSIVE ---------- */
     @media (max-width: 768px) {
-      .container {
-        padding: 2rem 1rem 4rem;
-        width: 100%;
-      }
-
-      .title {
-        margin-bottom: 8rem;
-        font-size: clamp(2rem, 12vw, 4rem);
-      }
-
-      .description {
-        font-size: 0.95rem;
-        margin-bottom: 3.5rem;
-        max-width: 100%;
-      }
-
-      .details {
-        font-size: 0.9rem;
-        margin-bottom: 4rem;
-        width: 100%;
-      }
-
-      .cta-button {
-        margin: 1.5rem 0 2.5rem;
-      }
-
-      .rsvp-form {
-        padding: 1.5rem 1rem;
-        max-width: 100%;
-      }
-
-      .tree-container {
-        font-size: 60px;
-      }
-
-      #cherry-tree {
-        font-size: 60px;
-      }
+      .title { margin-bottom: 4rem; }
+      .subtitle { margin-bottom: 8rem; }
     }
   </style>
 </head>
@@ -356,15 +241,27 @@
         <div id="cherry-tree"></div>
     </div>
 
-    <!-- TITLE -->
     <h1 class="title">Wedding of<br> Julie &amp; Ian</h1>
-    <h3 class = "subtitle">23rd May 2026</h3>
+    <h3 class="subtitle">23rd May 2026</h3>
 
-    <!-- DESCRIPTION -->
-    <p class="description">
-      Together with our families and friends, we invite you to celebrate our wedding at Fishlake Mill.<br>
+    <p class="midnight-note">
+      Together with our families and friends,<br> we invite you to celebrate our wedding at Fishlake Mill.<br>
       The fun begins with your arrival at 12.30 pm.<br>
     </p>
+
+    <section class="location-card">
+      <h2>Where</h2>
+      <p><strong>Fishlake Mill</strong></p>
+      <p>Eastfield Road</p>
+      <p>Fishlake, Doncaster</p>
+      <p>DN7 5LH</p>
+      
+      <span class="ceremony-badge">Outside Ceremony</span>
+
+      <div class="midnight-note">
+        The happy day ends when the dancing finishes at midnight.
+      </div>
+    </section>
 
     <section class="details" id="rsvp-section">
       <button class="cta-button" id="rsvp-button" type="button">RSVP</button>
@@ -443,28 +340,8 @@
         </div>
       </form>
     </section>
-      <!-- INFO -->
-    <section class="details">
-      <p>The happy day ends when the dancing finishes with the DJ at midnight.</p>
-    </section>
-
-    <!-- LOCATION INFO -->
-    <section class="when-where">
-      <div class="when-where-content">
-        <div class="when-where-item">
-          <h2 class="when-where-title">Where</h2>
-          <p class="when-where-detail">Fishlake Mill</p>
-          <p class="when-where-detail">Eastfield Road</p>
-          <p class="when-where-detail">Fishlake, Doncaster</p>
-          <p class="when-where-detail">DN7 5LH</p>
-        </div>
-      </div>
-      <p class="ceremony-note">Outside Ceremony</p>
-    </section>
-
   </main>
   <canvas id="blossomCanvas"></canvas>
   <script src="script.js"></script>
 </body>
 </html>
-
