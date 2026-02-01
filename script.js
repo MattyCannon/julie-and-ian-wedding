@@ -73,7 +73,7 @@
       
       // 1. Create the success paragraph
       const successMsg = document.createElement('p');
-      successMsg.innerHTML = `<strong>Thank you, ${name}!<br> If you'd like to give a gift <br> To help us on our way. <br> Some cash for our honeymoon <br> Would really make our day!<br> Thank you</strong>`;
+      successMsg.innerHTML = `<strong>Thank you, ${name}!<br><br> If you'd like to give a gift <br> To help us on our way. <br> Some cash for our honeymoon <br> Would really make our day!<br> Thank you</strong>`;
       
       // 2. Add some styling via JS
       successMsg.style.color = '#c9a36a'; // Matches your --accent color
