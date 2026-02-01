@@ -9,12 +9,9 @@
 
   if (!button || !form || !submitButton || !nameInput) return;
 
-  // Helper to compile choices for a specific course into a readable string
   function getQuantities(course) {
-    // Select only inputs belonging to the specified course
     const qtySelects = form.querySelectorAll(`.item-qty[data-course="${course}"]`);
     let summary = [];
-
     qtySelects.forEach(select => {
       const val = parseInt(select.value);
       if (val > 0) {
@@ -22,13 +19,10 @@
         summary.push(`${val} x ${itemName}`);
       }
     });
-
-    return summary.join(', '); // Returns a clean string like "2 x Steak, 1 x Salad"
+    return summary.join(', ');
   }
 
-
   function updateSubmitVisibility() {
-    // Only check if name is filled
     if (nameInput.value.trim().length > 0) {
       submitButton.removeAttribute('hidden');
     } else {
@@ -50,9 +44,9 @@
 
   submitButton.addEventListener('click', function () {
     const name = nameInput.value.trim();
-    const starterChoices = getQuantities(course='Starter');
-    const mainChoices = getQuantities(course='Main');
-    const dessertChoices = getQuantities(course='Dessert');
+    const starterChoices = getQuantities('Starter');
+    const mainChoices = getQuantities('Main');
+    const dessertChoices = getQuantities('Dessert');
     const dietary = dietaryInput ? dietaryInput.value.trim() : '';
 
     if (!name) return;
@@ -75,10 +69,25 @@
       body: JSON.stringify(payload)
     })
     .then(function() {
-      alert('Thank you for your RSVP, ' + name + '!');
+      // --- START OF EDIT ---
+      
+      // 1. Create the success paragraph
+      const successMsg = document.createElement('p');
+      successMsg.innerHTML = `<strong>Thank you, ${name}!<br> If you'd like to give a gift <br> To help us on our way. <br> Some cash for our honeymoon <br> Would really make our day!<br> Thank you</strong>`;
+      
+      // 2. Add some styling via JS
+      successMsg.style.color = '#c9a36a'; // Matches your --accent color
+      successMsg.style.marginTop = '2rem';
+      successMsg.style.fontSize = '1.1rem';
+      
+      // 3. Insert it into the section where the form was
+      form.parentNode.appendChild(successMsg);
+
+      // 4. Hide the form and the original RSVP button
       form.setAttribute('hidden', '');
-      button.innerText = "RSVP Sent!";
-      button.disabled = true;
+      button.style.display = 'none'; 
+      
+      // --- END OF EDIT ---
     })
     .catch(function (error) {
       console.error('[RSVP] Error:', error);
@@ -89,6 +98,8 @@
   });
 })();
 
+// Canvas petals
+// -------------
 const canvas = document.getElementById('blossomCanvas');
 const ctx = canvas.getContext('2d');
 const treeElement = document.getElementById('cherry-tree');
