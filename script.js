@@ -69,11 +69,11 @@
       body: JSON.stringify(payload)
     })
     .then(function() {
-      // --- START OF EDIT ---
-      
+  
       // 1. Create the success paragraph
       const successMsg = document.createElement('p');
-      successMsg.innerHTML = `<strong>Thank you, ${name}!<br><br> If you'd like to give a gift <br> To help us on our way. <br> Some cash for our honeymoon <br> Would really make our day!<br> Thank you</strong>`;
+      successMsg.innerHTML = `<img src="two-birds.jpg" alt="Wedding Illustration" class="form-illustration"><br>
+<strong>Thank you, ${name}!<br><br> If you'd like to give a gift <br> To help us on our way. <br> Some cash for our honeymoon <br> Would really make our day!<br> Thank you</strong>`;
       
       // 2. Add some styling via JS
       successMsg.style.color = '#c9a36a'; // Matches your --accent color
@@ -88,7 +88,6 @@
       form.setAttribute('hidden', '');
       button.style.display = 'none'; 
       
-      // --- END OF EDIT ---
     })
     .catch(function (error) {
       console.error('[RSVP] Error:', error);
